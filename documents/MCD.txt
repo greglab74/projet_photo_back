@@ -1,0 +1,42 @@
+CREATE TABLE genre(
+        ID_genre Int  Auto_increment  NOT NULL ,
+        genre    Varchar (50) NOT NULL
+	,CONSTRAINT genre_PK PRIMARY KEY (ID_genre)
+)ENGINE=InnoDB;
+
+
+CREATE TABLE lieu(
+        ID_lieu Int  Auto_increment  NOT NULL ,
+        lieu    Varchar (50) NOT NULL
+	,CONSTRAINT lieu_PK PRIMARY KEY (ID_lieu)
+)ENGINE=InnoDB;
+
+
+CREATE TABLE photographe(
+        ID_photographe Int  Auto_increment  NOT NULL ,
+        nom            Varchar (50) NOT NULL
+	,CONSTRAINT photographe_PK PRIMARY KEY (ID_photographe)
+)ENGINE=InnoDB;
+
+
+CREATE TABLE photo(
+        ID_photo       Int  Auto_increment  NOT NULL ,
+        titre          Varchar (50) NOT NULL ,
+        dateprise      Date NOT NULL ,
+        lienphoto      Varchar (50) NOT NULL ,
+        ID_lieu        Int NOT NULL ,
+        ID_photographe Int NOT NULL
+	,CONSTRAINT photo_PK PRIMARY KEY (ID_photo)
+
+	,CONSTRAINT photo_lieu_FK FOREIGN KEY (ID_lieu) REFERENCES lieu(ID_lieu)
+	,CONSTRAINT photo_photographe0_FK FOREIGN KEY (ID_photographe) REFERENCES photographe(ID_photographe)
+)ENGINE=InnoDB;
+
+CREATE TABLE apourgenre(
+        ID_photo Int NOT NULL ,
+        ID_genre Int NOT NULL
+	,CONSTRAINT apourgenre_PK PRIMARY KEY (ID_photo,ID_genre)
+
+	,CONSTRAINT apourgenre_photo_FK FOREIGN KEY (ID_photo) REFERENCES photo(ID_photo)
+	,CONSTRAINT apourgenre_genre0_FK FOREIGN KEY (ID_genre) REFERENCES genre(ID_genre)
+)ENGINE=InnoDB;
