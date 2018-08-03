@@ -36,155 +36,173 @@
 				<div class="stack">
 					<h2 class="stack-title"><a href="#" data-text="Portraits"><span>Portraits</span></a></h2>
 					<!-- Création d'un Article -->
+
+
+					<?php
+					$query = 'SELECT * FROM photo NATURAL JOIN apourgenre WHERE ID_genre = 1 ORDER BY dateprise DESC';
+					$searchphoto = $dbh->query($query);
+
+
+          while ($a = $searchphoto->fetch())
+      {
+          $idphoto = $a['ID_photo'];
+          $titre = $a['titre'];
+          $dateprise = $a['dateprise'];
+          $lienphoto = $a['lienphoto'];
+          $lieu = $dbh->query('SELECT lieu FROM lieu NATURAL JOIN photo WHERE ID_photo = "'.$idphoto.'"');
+          $lieup = $lieu->fetch();
+          $lieuphoto = $lieup['lieu'];
+
+          $lienidphotographe = $dbh->query('SELECT nom FROM photographe NATURAL JOIN photo WHERE ID_photo = "'.$idphoto.'"');
+          $lienidpho = $lienidphotographe->fetch();
+          $photographe = $lienidpho['nom'];
+
+
+          ?>
+
 					<div class="item">
 						<div class="item__content">
-							<img src="img/type1/1.jpg" alt="img01" />
-							<h3 class="item__title">Hoodie stumptown kitsch <span class="item__date">05/05/2015</span></h3>
+							<img src="<?php echo $lienphoto;?>" alt="img" />
+							<h3 class="item__title"><?php echo $titre;?><span class="item__date"><?php echo $dateprise;?></span></h3>
 							<div class="item__details">
 								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
+									<li><i class="icon icon-camera"></i><span>Photographe: <?php echo $photographe;?></span></li>
+									<li><i class="icon icon-focal_length"></i><span>Lieu:<?php echo $lieuphoto;?></span></li>
+
 								</ul>
 							</div>
 						</div>
 					</div>
+					<?php } ?>
 					<!-- Fin d'un Article -->
-					<!-- Création d'un Article -->
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type1/1.jpg" alt="img01" />
-							<h3 class="item__title">Hoodie stumptown kitsch <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- Fin d'un Article -->
+
 				</div>
 				<!-- Fin d'une catégorie -->
 				<!-- Création d'une catégorie -->
 				<div class="stack">
-					<h2 class="stack-title"><a href="#" data-text="Portraits"><span>Paysages</span></a></h2>
+					<h2 class="stack-title"><a href="#" data-text="Objets"><span>Objets</span></a></h2>
 					<!-- Création d'un Article -->
+					<?php
+					$query = 'SELECT * FROM photo NATURAL JOIN apourgenre WHERE ID_genre = 2 ORDER BY dateprise DESC';
+					$searchphoto = $dbh->query($query);
+
+
+          while ($a = $searchphoto->fetch())
+      {
+          $idphoto = $a['ID_photo'];
+          $titre = $a['titre'];
+          $dateprise = $a['dateprise'];
+          $lienphoto = $a['lienphoto'];
+          $lieu = $dbh->query('SELECT lieu FROM lieu NATURAL JOIN photo WHERE ID_photo = "'.$idphoto.'"');
+          $lieup = $lieu->fetch();
+          $lieuphoto = $lieup['lieu'];
+
+          $lienidphotographe = $dbh->query('SELECT nom FROM photographe NATURAL JOIN photo WHERE ID_photo = "'.$idphoto.'"');
+          $lienidpho = $lienidphotographe->fetch();
+          $photographe = $lienidpho['nom'];
+
+
+          ?>
+
 					<div class="item">
 						<div class="item__content">
-							<img src="img/type1/1.jpg" alt="img01" />
-							<h3 class="item__title">Hoodie stumptown kitsch <span class="item__date">05/05/2015</span></h3>
+							<img src="<?php echo $lienphoto;?>" alt="img" />
+							<h3 class="item__title"><?php echo $titre;?><span class="item__date"><?php echo $dateprise;?></span></h3>
 							<div class="item__details">
 								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
+									<li><i class="icon icon-camera"></i><span>Photographe: <?php echo $photographe;?></span></li>
+									<li><i class="icon icon-focal_length"></i><span>Lieu:<?php echo $lieuphoto;?></span></li>
+
 								</ul>
 							</div>
 						</div>
 					</div>
-					<!-- Fin d'un Article -->
+					<?php } ?>
+				</div>
+
+				<!-- Création d'une catégorie -->
+				<div class="stack">
+					<h2 class="stack-title"><a href="#" data-text="Paysages"><span>Paysages</span></a></h2>
 					<!-- Création d'un Article -->
+					<?php
+					$query = 'SELECT * FROM photo NATURAL JOIN apourgenre WHERE ID_genre = 3 ORDER BY dateprise DESC';
+					$searchphoto = $dbh->query($query);
+
+
+          while ($a = $searchphoto->fetch())
+      {
+          $idphoto = $a['ID_photo'];
+          $titre = $a['titre'];
+          $dateprise = $a['dateprise'];
+          $lienphoto = $a['lienphoto'];
+          $lieu = $dbh->query('SELECT lieu FROM lieu NATURAL JOIN photo WHERE ID_photo = "'.$idphoto.'"');
+          $lieup = $lieu->fetch();
+          $lieuphoto = $lieup['lieu'];
+
+          $lienidphotographe = $dbh->query('SELECT nom FROM photographe NATURAL JOIN photo WHERE ID_photo = "'.$idphoto.'"');
+          $lienidpho = $lienidphotographe->fetch();
+          $photographe = $lienidpho['nom'];
+
+
+          ?>
+
 					<div class="item">
 						<div class="item__content">
-							<img src="img/type1/1.jpg" alt="img01" />
-							<h3 class="item__title">Hoodie stumptown kitsch <span class="item__date">05/05/2015</span></h3>
+							<img src="<?php echo $lienphoto;?>" alt="img" />
+							<h3 class="item__title"><?php echo $titre;?><span class="item__date"><?php echo $dateprise;?></span></h3>
 							<div class="item__details">
 								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
+									<li><i class="icon icon-camera"></i><span>Photographe: <?php echo $photographe;?></span></li>
+									<li><i class="icon icon-focal_length"></i><span>Lieu:<?php echo $lieuphoto;?></span></li>
+
 								</ul>
 							</div>
 						</div>
 					</div>
+					<?php } ?>
 					<!-- Fin d'un Article -->
 				</div>
 
 				<!-- Création d'une catégorie -->
 				<div class="stack">
-					<h2 class="stack-title"><a href="#" data-text="Portraits"><span>Nature</span></a></h2>
+					<h2 class="stack-title"><a href="#" data-text="Animaux"><span>Animaux</span></a></h2>
 					<!-- Création d'un Article -->
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type1/1.jpg" alt="img01" />
-							<h3 class="item__title">Hoodie stumptown kitsch <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- Fin d'un Article -->
-					<!-- Création d'un Article -->
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type1/1.jpg" alt="img01" />
-							<h3 class="item__title">Hoodie stumptown kitsch <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- Fin d'un Article -->
-				</div>
+					<?php
+					$query = 'SELECT * FROM photo NATURAL JOIN apourgenre WHERE ID_genre = 4 ORDER BY dateprise DESC';
+					$searchphoto = $dbh->query($query);
 
-				<!-- Création d'une catégorie -->
-				<div class="stack">
-					<h2 class="stack-title"><a href="#" data-text="Portraits"><span>Voyage</span></a></h2>
-					<!-- Création d'un Article -->
+
+          while ($a = $searchphoto->fetch())
+      {
+          $idphoto = $a['ID_photo'];
+          $titre = $a['titre'];
+          $dateprise = $a['dateprise'];
+          $lienphoto = $a['lienphoto'];
+          $lieu = $dbh->query('SELECT lieu FROM lieu NATURAL JOIN photo WHERE ID_photo = "'.$idphoto.'"');
+          $lieup = $lieu->fetch();
+          $lieuphoto = $lieup['lieu'];
+
+          $lienidphotographe = $dbh->query('SELECT nom FROM photographe NATURAL JOIN photo WHERE ID_photo = "'.$idphoto.'"');
+          $lienidpho = $lienidphotographe->fetch();
+          $photographe = $lienidpho['nom'];
+
+
+          ?>
+
 					<div class="item">
 						<div class="item__content">
-							<img src="img/type1/1.jpg" alt="img01" />
-							<h3 class="item__title">Hoodie stumptown kitsch <span class="item__date">05/05/2015</span></h3>
+							<img src="<?php echo $lienphoto;?>" alt="img" />
+							<h3 class="item__title"><?php echo $titre;?><span class="item__date"><?php echo $dateprise;?></span></h3>
 							<div class="item__details">
 								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
+									<li><i class="icon icon-camera"></i><span>Photographe: <?php echo $photographe;?></span></li>
+									<li><i class="icon icon-focal_length"></i><span>Lieu:<?php echo $lieuphoto;?></span></li>
+
 								</ul>
 							</div>
 						</div>
 					</div>
-					<!-- Fin d'un Article -->
-					<!-- Création d'un Article -->
-					<div class="item">
-						<div class="item__content">
-							<img src="img/type1/1.jpg" alt="img01" />
-							<h3 class="item__title">Hoodie stumptown kitsch <span class="item__date">05/05/2015</span></h3>
-							<div class="item__details">
-								<ul>
-									<li><i class="icon icon-camera"></i><span>Canon PowerShot S95</span></li>
-									<li><i class="icon icon-focal_length"></i><span>22.5mm</span></li>
-									<li><i class="icon icon-aperture"></i><span>&fnof;/5.6</span></li>
-									<li><i class="icon icon-exposure_time"></i><span>1/1000</span></li>
-									<li><i class="icon icon-iso"></i><span>80</span></li>
-								</ul>
-							</div>
-						</div>
-					</div>
+					<?php } ?>
 					<!-- Fin d'un Article -->
 				</div>
 
