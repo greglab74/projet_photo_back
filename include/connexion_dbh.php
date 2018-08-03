@@ -7,7 +7,7 @@
   //$serveur = 'localhost';
   $login = 'dbo745062856';
   //$login = 'root';
-  $mot_de_passe = '*Gregory012';
+  $mot_de_passe = '';
   //$mot_de_passe = '*1';
   $nom_bd = 'db745062856';
 
